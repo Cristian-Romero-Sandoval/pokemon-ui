@@ -45,7 +45,7 @@ export default css`
 }
 
 .img {
-  max-width: 40%;
+  max-width: 60%;
   height: auto;
   margin-bottom: 10px; /* Espacio entre la imagen y el texto */
 }
@@ -109,7 +109,7 @@ export default css`
 
 .modal-content {
   background-color: white;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative; /* Para el posicionamiento del botón de cerrar */

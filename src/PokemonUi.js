@@ -20,8 +20,8 @@ export class PokemonUi extends LitElement {
     super();
     this.name = 'Cells';
     this.pokemon = [];
-    this.selectedEvolutionIndex = 0; // Índice de evolución actual
-    this.selectedPokemon = null; // Inicialmente no hay Pokémon seleccionado
+    this.selectedEvolutionIndex = 0; 
+    this.selectedPokemon = null; 
 
   }
 
@@ -121,27 +121,27 @@ async getEvolution(chain) {
 changeEvolution(direction) {
   this.selectedEvolutionIndex += direction;
 
-  // Asegúrate de que el índice esté dentro de los límites
+  
   if (this.selectedEvolutionIndex < 0) {
-      this.selectedEvolutionIndex = 0; // Mantener en el índice 0 si va más allá
+      this.selectedEvolutionIndex = 0; 
   } else if (this.selectedEvolutionIndex >= this.selectedPokemon.evolution.length) {
-      this.selectedEvolutionIndex = this.selectedPokemon.evolution.length - 1; // Mantener en el último índice si va más allá
+      this.selectedEvolutionIndex = this.selectedPokemon.evolution.length - 1; 
   }
 
-  this.requestUpdate(); // Notificar que se debe re-renderizar
+  this.requestUpdate(); 
 }
 
 
 toggleEvolutions(pokemon) {
   this.selectedPokemon = pokemon; // Establecer el Pokémon seleccionado
   this.selectedEvolutionIndex = 0; // Reiniciar el índice de evolución
-  this.requestUpdate(); // Notificar que se debe re-renderizar
+  this.requestUpdate(); 
 }
 
 
 closeModal() {
-  this.selectedPokemon = null; // Restablece el Pokémon seleccionado
-  this.requestUpdate(); // Solicita una actualización para ocultar el modal
+  this.selectedPokemon = null;
+  this.requestUpdate(); 
 }
 
 
@@ -174,18 +174,18 @@ renderModal(pokemon) {
       <div class="modal-content" @click="${(e) => e.stopPropagation()}">
         <span class="close" @click="${this.closeModal}">&times;</span>
         <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
-        <img src="${currentEvolution.imageUrl}" alt="${currentEvolution.name}" class="modal-image">
+        <img class="img" src="${currentEvolution.imageUrl}" alt="${currentEvolution.name}" class="modal-image">
         <p>${currentEvolution.name.charAt(0).toUpperCase() + currentEvolution.name.slice(1)}</p>
         
         <div>
-          <button 
+         <bbva-button-default
             ?disabled="${this.selectedEvolutionIndex === 0}" 
-            @click="${() => this.changeEvolution(-1)}">Anterior</button>
-          <button 
+            @click="${() => this.changeEvolution(-1)}">Anterior </bbva-button-default>
+          <bbva-button-default
             ?disabled="${this.selectedEvolutionIndex === pokemon.evolution.length - 1}" 
-            @click="${() => this.changeEvolution(1)}">Siguiente</button>
+            @click="${() => this.changeEvolution(1)}">Siguiente </bbva-button-default>
         </div>
-        <button @click="${this.closeModal}">Cerrar</button>
+       <bbva-button-default @click="${this.closeModal}">Cerrar </bbva-button-default>
       </div>
     </div>
   `;
